@@ -57,22 +57,26 @@ void quickSort(vector<int> *&freqVector, unsigned int left, unsigned int right) 
 	unsigned int tmp;
 	int pivot = freqVector->at((left + right) / 2);
 
+	cout << "init" << endl;
 	displayQuickSortVars(i, j, left, right, pivot);
 
 	/* partition */
 
 	while (i <= j)
 	{
+		
 		while (freqVector->at(i) < pivot)
 		{
-			displayQuickSortVars(i, j, left, right, pivot);
+			cout << freqVector->at(i) << " < pivot" << endl;
 			i++;
+			displayQuickSortVars(i, j, left, right, pivot);
 		}
 
 		while (freqVector->at(j) > pivot)
 		{
-			displayQuickSortVars(i, j, left, right, pivot);
+			cout << freqVector->at(j) << " > pivot" << endl;
 			j--;
+			displayQuickSortVars(i, j, left, right, pivot);
 		}
 
 		if (i <= j)
@@ -82,8 +86,9 @@ void quickSort(vector<int> *&freqVector, unsigned int left, unsigned int right) 
 			freqVector->at(j) = tmp;
 			i++;
 			j--;
+			displayQuickSortVars(i, j, left, right, pivot);
 		}
-		displayQuickSortVars(i, j, left, right, pivot);
+		
 	};
 
 	/* recursion */
